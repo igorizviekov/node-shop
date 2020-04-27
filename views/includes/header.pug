@@ -1,0 +1,23 @@
+nav
+    ul
+        li
+            a(href="/") SHOP
+        li
+            a(href="/shop/cart") CART
+        li
+            a(href="/shop/orders") ORDERS
+        if isLoggedIn
+            if isAdmin
+                li
+                    a(href="/admin/add-product") ADD PRODUCT
+                li
+                    a(href="/admin/products") ADMIN PRODUCTS
+            div(class='auth-button')
+                form(action="/logout", method="POST")
+                    input(type="hidden", name="_csrf" value=csrfToken)
+                    button(type="submit") LOGOUT
+        if !isLoggedIn
+            div(class='auth-button')
+                li
+                    a(href="/login" ) LOGIN
+                    a(href="/sign-up" )  SIGN UP

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/main.css
+            include ../../Styles/header.css
+        title Product Details
+    body
+        include ../includes/header        
+        main
+            h1 Product Details
+            section(class='details-section')
+                div(class='product-item product-details')
+                    h4 #{product.title}
+                    br
+                    p Price: <strong>$#{product.price}</strong>
+                    br
+                    div
+                        p Description:
+                        p <strong>#{product.description}</strong>
+                    img(src=product.imageURL, alt=product.title)
+                    form(action='/add-to-cart' method='POST')
+                        input(type="hidden" name='title'  value=product.title)
+                        input(type="hidden" name='price' value=product.price)
+                        input(type="hidden" name='id' value=product._id)
+                        input(type="hidden", name="_csrf" value=csrfToken)
+                        button(type='submit' class='button') ADD TO CART
+                

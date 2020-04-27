@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/header.css
+            include ../../Styles/login.css
+        title Login
+    body
+        include ../includes/header        
+        main
+            h1 Login
+            section
+                h4(class='error') #{errorMessage}
+                form(action='/login' method='POST')
+                    label(for="email") E-Mail
+                    input(type='email' name='email' value=email)
+                    label(for="password") Password
+                    input(type='password' name='password' value=password) 
+                    label(for="confirmPassword") Confirm Password
+                    input(type='password' name='confirmPassword')
+                    input(type="hidden", name="_csrf" value=csrfToken)
+                    button(type='submit') Login
+                if errorMessage === 'The password should be at least 5 characters.' || errorMessage === 'Passwords have to match.'
+                    div(class='reset-password')
+                        h4 Forgot Password?
+                        a(href="/reset-password") Reset Password
+                

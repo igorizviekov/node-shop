@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/main.css
+            include ../../Styles/header.css
+            include ../../Styles/login.css
+
+        title Edit Product
+    body
+        include ../includes/header        
+        main
+            section
+                h1 EDIT
+                h4(class='error') #{errorMessage}
+                form(action="/update-product", method="POST" enctype='multipart/form-data' )
+                    label(for="title") Title
+                    input(type="text" name='title' value=product.title)
+                    div
+                        div
+                            label(for="imageURL") Image
+                            input(type='file' name='image' value=imageURL class='file-upload')
+                        div
+                            label(for="Price") Price
+                            input(type="number" name='price' value=product.price)
+                    label(for="description") Description
+                    textarea( name="description", cols="30", rows="10") #{product.description}
+                    input(type="hidden" name='id' value=product.id)
+                    input(type="hidden", name="_csrf" value=csrfToken)
+                    button(type="submit") UPDATE

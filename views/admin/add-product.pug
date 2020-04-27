@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/main.css
+            include ../../Styles/header.css
+            include ../../Styles/login.css
+        title Add Product
+    body
+        include ../includes/header        
+        main
+            h1 Add Product
+            section
+                h4(class='error') #{errorMessage}
+                form(action='/new-product' method='POST' enctype='multipart/form-data' )
+                    label(for="title") Title
+                    input(type='text' name='title' value=title )
+                    div
+                        div
+                            label(for="imageURL") Image
+                            input(type='file' name='image' value=image class='file-upload')
+                        div
+                            label(for="Price") Price
+                            input(type='number' name='price' value=price)
+                    label(for="description") Description
+                    textarea( name="description", cols="30", rows="10") #{description}
+                    input(type="hidden", name="_csrf" value=csrfToken)
+                    button(type='submit') CREATE

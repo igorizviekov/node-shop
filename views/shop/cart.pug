@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/main.css
+            include ../../Styles/header.css
+        title Cart
+    body
+        include ../includes/header        
+        main
+            h1 Shop Cart
+            section(class='cart-section')
+                if products.length > 0
+                    each item in products
+                        div(class='cart-item')
+                            span Title:
+                                h4 #{ item.prodId.title }
+                            p Quantity: #{item.quantity}
+                            p Price: #{item.prodId.price}
+                            form(action='/delete' method='POST')
+                                input(type="hidden" name='id'  value=item.prodId._id)
+                                input(type="hidden", name="_csrf" value=csrfToken)
+                                button(type='submit') Delete
+                    form(action='/add-to-order' method='POST')
+                        input(type="hidden", name="_csrf" value=csrfToken)
+                        button(type='submit' class='button') Order
+                else
+                    h1 No Products
+                

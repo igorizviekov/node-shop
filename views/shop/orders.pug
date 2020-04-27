@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/main.css
+            include ../../Styles/header.css
+        title Orders
+    body
+        include ../includes/header        
+        main
+            h1 My Orders
+            section(class='cart-section')
+                each order in orders
+                    div(class='cart-item order-items')
+                        each item in order.products
+                            div
+                                h4 #{item.productData.title} (#{item.quantity})
+                                p Price: $#{item.productData.price}
+                        a(href=`/shop/orders/` + order._id) Invoice
+                h2 Total price: $#{total}

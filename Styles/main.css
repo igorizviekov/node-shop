@@ -1,0 +1,132 @@
+main {
+  padding-top: 3em;
+}
+main h1 {
+  text-align: center;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22em, 1fr));
+}
+
+.product-item {
+  background-color: white;
+  -webkit-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  width: 20em;
+  height: 25em;
+  text-align: center;
+  margin: 1em;
+  padding: 0.5em;
+}
+.product-item img {
+  max-width: 18em;
+  max-height: 15em;
+  margin-bottom: 0.5em;
+}
+
+.product-item h4,
+p {
+  margin-bottom: 0;
+}
+
+.product-item a {
+  font-weight: normal;
+}
+
+.control-buttons {
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.control-buttons button {
+  cursor: pointer;
+  padding: 0.5em;
+  border: 1px solid lightgrey;
+  font-size: medium;
+}
+
+.control-buttons button:hover {
+  background-color: rgb(250, 250, 250);
+  cursor: pointer;
+}
+
+.cart-section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.cart-section h1 {
+  font-weight: normal;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  margin-bottom: 1em;
+  align-items: center;
+  background-color: white;
+  -webkit-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  height: 5em;
+
+  padding: 0.5em;
+}
+.cart-item h4,
+form,
+p {
+  margin: 0;
+}
+.cart-item button {
+  cursor: pointer;
+  padding: 0.5em;
+  border: 1px solid lightgrey;
+  font-size: medium;
+}
+
+.cart-item button:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.button {
+  cursor: pointer;
+  padding: 0.5em;
+  border: 1px solid lightgrey;
+  font-size: medium;
+}
+.button:hover {
+  background-color: rgb(250, 250, 250);
+}
+.order-items {
+  padding: 0.5em 2em;
+  width: 60%;
+}
+.order-items div {
+  margin-right: 10%;
+}
+.order-items a {
+  margin-left: auto;
+  padding: 1em;
+  font-weight: normal;
+  border: 1px solid lightgrey;
+}
+.order-items a:hover {
+  background-color: rgb(250, 250, 250);
+}
+.details-section {
+  display: flex;
+  justify-content: center;
+}
+.product-details {
+  width: 70%;
+  height: 70vh;
+}
+
+.product-details img {
+  max-width: 90%;
+  max-height: 40vh;
+}

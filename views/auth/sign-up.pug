@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/header.css
+            include ../../Styles/login.css
+        title Sign Up
+    body
+        include ../includes/header        
+        main
+            h1 Sign-up Page
+            section
+                h4(class='error') #{errorMessage}
+                form(action='/sign-up' method='POST')
+                    label(for="email") E-Mail
+                    input(type='email' name='email' value=email)
+                    label(for="password") Password
+                    input(type='password' name='password' value=password) 
+                    label(for="confirm-password") Confirm Password
+                    input(type='password' name='confirmPassword')
+                    input(type="hidden", name="_csrf" value=csrfToken)
+                    button(type='submit') Sign Up
+            

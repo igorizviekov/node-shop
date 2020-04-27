@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../../Styles/main.css
+            include ../../Styles/header.css
+            include ../../Styles/pagination.css
+        title Main Page
+    body
+        include ../includes/header        
+        main
+            h1 Node Shop
+            if products.length > 0
+                section
+                    each item in products
+                        div(class='product-item')
+                            h4 #{ item.title }
+                            img(src=item.imageURL, alt=item.title)
+                            p $#{item.price}
+                            br
+                            div(class='control-buttons')
+                                a(href="/shop/details/" + item._id class='button') DETAILS
+                                form(action='/add-to-cart' method='POST')
+                                    input(type="hidden" name='title'  value=item.title)
+                                    input(type="hidden" name='price' value=item.price)
+                                    input(type="hidden" name='id' value=item._id)
+                                    input(type="hidden", name="_csrf" value=csrfToken)
+                                    button(type='submit' class='button') ADD TO CART
+                include ../includes/pagination        
+            else
+                p No Products
+

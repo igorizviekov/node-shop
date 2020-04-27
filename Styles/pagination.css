@@ -1,0 +1,16 @@
+.pagination {
+  width: 100%;
+}
+
+.pagination a {
+  background-color: white;
+  padding: 0.2em 0.5em;
+  border: 1px solid lightgrey;
+}
+
+.pagination a:active,
+.pagination a:hover,
+.pagination a.active {
+  color: white;
+  background-color: rgb(180, 180, 180);
+}

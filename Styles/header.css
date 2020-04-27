@@ -1,0 +1,52 @@
+body,
+html {
+  background-color: rgb(250, 250, 250);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #000001;
+}
+
+nav ul,
+nav {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  align-items: center;
+  height: 1em;
+  width: 100%;
+  padding: 1em 0;
+  -webkit-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+}
+
+ul li,
+a {
+  cursor: pointer;
+  margin-left: 1.5em;
+  list-style: none;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000001;
+  transition: color 500ms;
+}
+
+.auth-button {
+  margin-left: auto;
+  padding-right: 2em;
+}
+
+.auth-button button {
+  cursor: pointer;
+  padding: 0.5em;
+  border: none;
+  font-size: medium;
+}
+.auth-button button:hover {
+  border: 1px solid lightgrey;
+}

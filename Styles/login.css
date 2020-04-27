@@ -1,0 +1,85 @@
+main {
+  padding-top: 3em;
+}
+main h1 {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+section form {
+  display: flex;
+  width: 40%;
+  flex-flow: column;
+  background-color: white;
+  -webkit-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 3px 31px -9px rgba(0, 0, 0, 0.2);
+  padding: 2em;
+}
+
+section form input,
+textarea {
+  font-size: larger;
+  width: 100%;
+  padding: 0.2em;
+  margin-bottom: 1em;
+  outline: 1px solid lightgrey;
+}
+
+section form label {
+  margin-left: 1em;
+}
+
+section form button {
+  margin: auto;
+  margin-top: 1em;
+  cursor: pointer;
+  width: 30%;
+  padding: 0.5em;
+  border: 1px solid lightgrey;
+  font-size: medium;
+}
+
+section form button:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.error {
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: rgb(187, 56, 56);
+}
+.reset-password {
+  margin-top: 1em;
+}
+.reset-password a,
+h4 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.reset-password a {
+  font-weight: bold;
+}
+
+.reset-password a:hover {
+  zoom: 102%;
+}
+form div {
+  width: 80%;
+  margin-left: 1em;
+  display: flex;
+  justify-content: center;
+}
+form div input {
+  font-size: small;
+  width: 60%;
+  margin-left: 1em;
+}
