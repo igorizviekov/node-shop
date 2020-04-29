@@ -401,7 +401,8 @@ exports.postAuthLogin = (req, res, next) => {
           });
         }
         //passwords don't match
-        res.redirect("/login", { email, password });
+        req.flash("error", "Wrong Password.");
+        return res.redirect("/login");
       })
       .catch(() => {
         res.redirect("/");
@@ -487,7 +488,6 @@ exports.postAuthResetPassword = (req, res, next) => {
     //find user by email
     User.findOne({ email: req.body.email })
       .then(userData => {
-        //if no such user
         if (!userData) {
           req.flash("error", "No account with this email found.");
           return res.redirect("/reset-password");
@@ -499,6 +499,9 @@ exports.postAuthResetPassword = (req, res, next) => {
       })
       //send an email with a reset link
       .then(result => {
+        if (!result) {
+          return req.flash("error", "No account with this email found.");
+        }
         res.redirect("/");
         transporter.sendMail({
           to: req.body.email,
@@ -519,7 +522,7 @@ exports.postAuthResetPassword = (req, res, next) => {
 };
 
 //render reset password form from a link
-exports.authResetPasswordForm = (req, res) => {
+exports.authResetPasswordForm = (req, res, next) => {
   const token = req.params.token;
   User.findOne({
     //find user by token
