@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const keys = require("./data/sensitive");
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const authRoutes = require("./routes/auth");
@@ -14,9 +13,10 @@ const csrf = require("csurf");
 const flash = require("connect-flash");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const User = require("./models/mgUser");
-
+//global variables
+require("dotenv").config();
 const store = new MongoDBStore({
-  uri: keys.server,
+  uri: `${process.env.MONGO_DB}`,
   collection: "sessions"
 });
 
@@ -55,7 +55,7 @@ app.use("/assets", express.static(path.join(__dirname, "assets"))); //public fol
 app.use(
   session({
     store: store,
-    secret: keys.secret,
+    secret: `${process.env.SECRET}`,
     resave: false,
     saveUninitialized: false
   })
@@ -104,7 +104,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(keys.server, {
+  .connect(`${process.env.MONGO_DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

@@ -33,6 +33,7 @@
     "sequelize": "^5.21.6"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "reload": "^3.0.4"
   }
 }

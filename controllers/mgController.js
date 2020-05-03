@@ -1,7 +1,6 @@
 const Product = require("../models/mgProduct");
 const Order = require("../models/mgOrder");
 const User = require("../models/mgUser");
-const keys = require("../data/sensitive");
 const bcrypt = require("bcryptjs");
 const PDFDocument = require("pdfkit");
 var salt = bcrypt.genSaltSync(10);
@@ -20,7 +19,7 @@ const sendGrid = require("nodemailer-sendgrid-transport");
 const transporter = nodemailer.createTransport(
   sendGrid({
     auth: {
-      api_key: keys.api
+      api_key: `${process.env.SENDGRID_KEY}`
     }
   })
 );
@@ -391,7 +390,7 @@ exports.postAuthLogin = (req, res, next) => {
         //passwords match
         if (doMatch) {
           //pass admin data
-          if (email === keys.admin) {
+          if (email === `${process.env.ADMIN_EMAIL}`) {
             req.session.isAdmin = true;
           }
           req.session.isLoggedIn = true;
@@ -453,7 +452,7 @@ exports.postAuthSignUp = (req, res, next) => {
       return transporter
         .sendMail({
           to: email,
-          from: keys.email,
+          from: `${process.env.EMAIL}`,
           subject: "Sign Up succeeded!",
           html: "<h1> You successfully signed up! </h1>"
         })
@@ -505,11 +504,11 @@ exports.postAuthResetPassword = (req, res, next) => {
         res.redirect("/");
         transporter.sendMail({
           to: req.body.email,
-          from: keys.email,
+          from: `${process.env.EMAIL}`,
           subject: "Password Reset",
           html: `
         <h4>You requested password reset</h4>
-        <p>Click this <a href="${keys.domain}reset-password/${token}" >link</a> to set a new password</p>
+        <p>Click this <a href="${process.env.SERVER_URL}reset-password/${token}" >link</a> to set a new password</p>
         `
         });
       })
@@ -578,7 +577,7 @@ exports.postAuthNewPassword = (req, res) => {
       res.redirect("/login");
       transporter.sendMail({
         to: userEmail,
-        from: keys.email,
+        from: `${process.env.EMAIL}`,
         subject: "Password Successfully Updated",
         html: "<h1>You password has been successfully updated! </h1>"
       });
